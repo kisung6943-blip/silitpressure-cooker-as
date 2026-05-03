@@ -147,11 +147,11 @@ export default function App() {
     
     setIsSaving(true);
     
-    // Use toPng with higher resolution
+    // Use toPng with MAX resolution (5x)
     htmlToImage.toPng(element, {
       quality: 1.0,
-      pixelRatio: 3, // Increased for ultra-high resolution
-      backgroundColor: '#f8fafc',
+      pixelRatio: 5, // Max resolution for extreme zoom clarity
+      backgroundColor: '#ffffff', // Clean white background
       style: {
         transform: 'scale(1)',
         margin: '0',

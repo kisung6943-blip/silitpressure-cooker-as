@@ -228,8 +228,8 @@ export default function App() {
               onClick={() => window.print()}
               className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 transition-all hover:scale-[1.02] active:scale-95"
             >
-              <Printer size={18} />
-              <span>출력하기</span>
+              <Download size={18} />
+              <span>PDF 다운로드 / 인쇄</span>
             </button>
           </div>
         </div>
@@ -450,11 +450,11 @@ export default function App() {
 
             {/* Reference Image moved here for print */}
             {referenceImage && (
-              <div className="mt-4 hidden print:block">
+              <div className="mt-4 hidden print:flex justify-center w-full">
                 <img 
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-[400px] rounded-lg" 
+                  className="max-w-[450px] rounded-lg" 
                   style={{ imageRendering: 'auto' }}
                 />
               </div>

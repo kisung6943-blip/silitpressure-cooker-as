@@ -252,8 +252,8 @@ export default function App() {
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-4">
-          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-2 print:pl-6 print:border-l-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-2">
+          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-1 print:pl-6 print:border-l-4">
             <div className="flex items-center gap-2 mb-1 text-slate-400">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
@@ -386,10 +386,10 @@ export default function App() {
             </tbody>
             <tfoot>
               <tr className="bg-slate-50 print:bg-white font-black border-t-2 border-slate-200 print:border-t">
-                <td colSpan={4} className="py-5 print:py-0.5 px-6 text-right text-slate-500 uppercase tracking-widest text-[10px]">
+                <td colSpan={4} className="py-5 print:py-0 px-6 text-right text-slate-500 uppercase tracking-widest text-[10px]">
                   합 계 (SUBTOTAL)
                 </td>
-                <td className="py-5 print:py-0.5 px-6 text-right text-xl print:text-base text-blue-700">
+                <td className="py-5 print:py-0 px-6 text-right text-xl print:text-base text-blue-700">
                   {formatCurrency(totalAmount)}
                 </td>
                 <td className="no-print"></td>

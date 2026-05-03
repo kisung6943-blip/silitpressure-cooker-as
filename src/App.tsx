@@ -407,12 +407,12 @@ export default function App() {
               </AnimatePresence>
             </tbody>
             <tfoot>
-              <tr className="bg-slate-50 print:bg-white font-black border-t-2 border-slate-200 print:border-t">
-                <td colSpan={4} className="py-5 print:py-0 px-6 text-right text-slate-500 uppercase tracking-widest text-[10px]">
-                  합 계 (SUBTOTAL)
-                </td>
-                <td className="py-5 print:py-0 px-6 text-right text-xl print:text-base text-blue-700">
-                  {formatCurrency(totalAmount)}
+              <tr className="bg-slate-50 print:bg-white font-black border-t-2 border-slate-950 print:border-t">
+                <td colSpan={5} className="py-4 px-6 text-right">
+                  <div className="flex justify-end items-center gap-6">
+                    <span className="text-slate-500 uppercase tracking-widest text-xs">합 계 (SUBTOTAL)</span>
+                    <span className="text-3xl text-blue-700">{formatCurrency(totalAmount)}</span>
+                  </div>
                 </td>
                 <td className="no-print"></td>
               </tr>
@@ -422,15 +422,15 @@ export default function App() {
         
         <button
           onClick={handleAddItem}
-          className="mb-10 flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 no-print px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 transition-all active:scale-95"
+          className="mb-4 flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 no-print px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 transition-all active:scale-95"
         >
           <Plus size={18} />
           <span>품목 추가 (Add Line)</span>
         </button>
 
         {/* Payment and Bank Account */}
-        <div className="flex flex-col md:flex-row justify-between gap-6 mb-4 print:mb-0 print:gap-0">
-          <div className="flex-1 flex flex-col gap-2 p-6 print:p-0 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
+        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4 print:mb-0 print:gap-0">
+          <div className="flex-1 flex flex-col gap-2 p-4 print:p-0 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
                 <CreditCard size={18} className="text-slate-400 no-print" />
@@ -453,18 +453,18 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <div className="flex gap-2 items-center">
-                <span className="font-bold text-slate-900 text-sm print:text-[10px]">입금계좌:</span>
-                <span className="font-black text-blue-700 text-lg print:text-sm">
+                <span className="font-bold text-slate-900 text-base">입금계좌:</span>
+                <span className="font-black text-blue-700 text-xl print:text-base">
                   {bankType === 'nh' 
                     ? '농협 351-1237-0729-73 이에스리빙' 
                     : '신한은행 100-034-808558 이에스리빙'}
                 </span>
               </div>
               {bankType === 'nh' && (
-                <div className="inline-flex items-center gap-2 text-rose-600 font-bold text-[10px] bg-rose-50 print:bg-white px-3 py-0 rounded-full w-fit mt-0.5">
-                  <span className="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse no-print" />
+                <div className="inline-flex items-center gap-2 text-rose-600 font-bold text-sm bg-rose-50 print:bg-white px-3 py-1 rounded-full w-fit">
+                  <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse no-print" />
                   ※ 고객님 전화번호로 현금영수증이 자동 발행됩니다.
                 </div>
               )}

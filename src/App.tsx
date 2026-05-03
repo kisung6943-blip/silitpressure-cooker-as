@@ -407,7 +407,7 @@ export default function App() {
         </button>
 
         {/* Payment and Bank Account */}
-        <div className="flex flex-col md:flex-row justify-between gap-6 mb-4 print:mb-0">
+        <div className="flex flex-col md:flex-row justify-between gap-6 mb-4 print:mb-0 print:gap-0">
           <div className="flex-1 flex flex-col gap-2 p-6 print:p-0 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
@@ -463,9 +463,9 @@ export default function App() {
         </div>
 
         {/* Parts Reference Section */}
-        <div className="mt-4 print:mt-0 pt-4 print:pt-0 border-t-2 border-slate-100 print:border-none print-avoid-break">
+        <div className="mt-4 print:mt-0 pt-4 print:pt-0 border-t-2 border-slate-100 print:border-none print:pt-0 print:mt-0 print-avoid-break">
           <div className="flex justify-between items-center mb-6 print:mb-0">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 print:hidden">
               <div className="w-1.5 h-8 bg-slate-900 rounded-full no-print" />
               <h2 className="text-2xl print:text-[10px] font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
@@ -480,7 +480,7 @@ export default function App() {
             )}
           </div>
           
-          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 min-h-[400px] print:min-h-0 group">
+          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 print:pt-0 print:mt-0 min-h-[400px] print:min-h-0 group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 

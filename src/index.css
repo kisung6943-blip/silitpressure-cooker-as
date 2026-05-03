@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    .print-avoid-break {
+      page-break-inside: avoid;
+    }
+    .print-page {
+      @apply shadow-none m-0 p-0 max-w-none border-none bg-white;
+      width: 100% !important;
+    }
+    body {
+      background-color: white;
+    }
+  }
+}

@@ -18,36 +18,42 @@
       @media print {
         @page {
           size: A4;
-          margin: 5mm; /* Reduced margin */
+          margin: 0; /* Remove all margins for the page itself */
         }
         .no-print {
           display: none !important;
         }
         body {
           background: white !important;
-          padding: 0 !important;
+          padding: 5mm !important; /* Move padding to body for better control */
           margin: 0 !important;
-          font-size: 12px; /* Smaller base font for print */
-        }
-        /* Aggressively reduce all vertical margins and paddings */
-        * {
+          font-size: 11px;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
-        .print-tight * {
+        #root {
+          transform: scale(0.95);
+          transform-origin: top center;
+          width: 100%;
+        }
+        /* Aggressively remove vertical space */
+        * {
           margin-top: 0 !important;
-          margin-bottom: 2px !important;
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
+          padding-top: 0 !important;
+          page-break-inside: avoid !important;
         }
-        /* Specific overrides for App.tsx elements */
+        .mb-16, .mb-10, .mb-8, .mb-6 { margin-bottom: 5px !important; }
+        .mt-20, .mt-10 { margin-top: 0 !important; }
+        .py-14, .py-10, .py-8, .py-6 { padding-top: 2px !important; padding-bottom: 2px !important; }
+        
         table td, table th {
-          padding-top: 2px !important;
-          padding-bottom: 2px !important;
+          padding-top: 1px !important;
+          padding-bottom: 1px !important;
         }
-        h1, h2 {
-          margin-top: 5px !important;
-          margin-bottom: 5px !important;
+        
+        img {
+          max-height: 350px !important;
+          object-fit: contain;
         }
       }
     </style>

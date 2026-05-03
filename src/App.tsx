@@ -447,6 +447,18 @@ export default function App() {
                 </div>
               )}
             </div>
+
+            {/* Reference Image moved here for print */}
+            {referenceImage && (
+              <div className="mt-4 hidden print:block">
+                <img 
+                  src={referenceImage} 
+                  alt="압력솥 부품 명칭" 
+                  className="w-full max-w-[400px] rounded-lg" 
+                  style={{ imageRendering: 'auto' }}
+                />
+              </div>
+            )}
           </div>
           
           <div className="flex flex-col justify-center items-end pr-8 no-print">
@@ -462,12 +474,12 @@ export default function App() {
           </div>
         </div>
 
-        {/* Parts Reference Section */}
-        <div className="mt-4 print:mt-0 pt-4 print:pt-0 border-t-2 border-slate-100 print:border-none print:pt-0 print:mt-0 print-avoid-break">
-          <div className="flex justify-between items-center mb-6 print:mb-0">
-            <div className="flex items-center gap-3 print:hidden">
-              <div className="w-1.5 h-8 bg-slate-900 rounded-full no-print" />
-              <h2 className="text-2xl print:text-[10px] font-black tracking-tight text-slate-900">
+        {/* Parts Reference Section (Web only) */}
+        <div className="mt-4 pt-4 border-t-2 border-slate-100 print:hidden">
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-1.5 h-8 bg-slate-900 rounded-full" />
+              <h2 className="text-2xl font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
               </h2>
             </div>
@@ -480,7 +492,7 @@ export default function App() {
             )}
           </div>
           
-          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 print:pt-0 print:mt-0 min-h-[400px] print:min-h-0 group">
+          <div className="bg-slate-50 rounded-3xl p-4 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center min-h-[400px] group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 
@@ -488,8 +500,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-3xl print:max-w-full mx-auto rounded-xl shadow-2xl print:shadow-none" 
-                  style={{ imageRendering: 'auto' }}
+                  className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl" 
                 />
                 <button 
                   onClick={handleImageRemove}
@@ -500,7 +511,7 @@ export default function App() {
                 </button>
               </div>
             ) : (
-               <div className="text-center w-full max-w-md no-print py-16">
+               <div className="text-center w-full max-w-md py-16">
                  <div className="w-20 h-20 bg-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6 text-slate-400">
                     <ImageIcon size={40} />
                  </div>

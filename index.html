@@ -18,29 +18,27 @@
       @media print {
         @page {
           size: A4;
-          margin: 0;
+          margin: 10mm;
         }
         .no-print {
           display: none !important;
         }
         body {
-          background: #f8fafc !important;
+          background: white !important;
           margin: 0 !important;
           padding: 0 !important;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
         #root {
-          zoom: 0.72; /* Chrome/Edge/Safari */
-          transform: scale(0.72); /* Firefox */
-          transform-origin: top center;
           width: 100%;
         }
         .shadow-[0_20px_50px_rgba(0,0,0,0.05)] {
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+          box-shadow: none !important;
+          border: 1px solid #e2e8f0 !important;
         }
         img {
-          max-height: 250px !important;
+          max-height: 350px !important;
           object-fit: contain;
         }
       }

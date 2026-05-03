@@ -238,7 +238,7 @@ export default function App() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:mb-0 relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:max-w-none print:w-full print:p-6 print:m-0 print:rounded-none relative overflow-hidden"
       >
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
@@ -317,11 +317,11 @@ export default function App() {
         </div>
 
         {/* Items Table */}
-        <div className="mb-4 print:mb-1 overflow-hidden rounded-2xl border border-slate-200 print:rounded-none">
-          <table className="w-full border-collapse text-sm">
+        <div className="mb-4 print:mb-2 overflow-hidden rounded-2xl border border-slate-200 print:rounded-none">
+          <table className="w-full border-collapse text-sm print:text-xs">
             <thead>
               <tr className="bg-slate-900 text-white print:bg-slate-50 print:text-slate-900">
-                <th className="py-4 print:py-1 px-4 w-12 text-center font-bold">NO</th>
+                <th className="py-4 print:py-2 px-4 w-12 text-center font-bold">NO</th>
                 <th className="py-4 print:py-2 px-4 text-left font-bold uppercase tracking-wider">품목명 / Item Description</th>
                 <th className="py-4 px-2 w-20 text-center font-bold">수량</th>
                 <th className="py-4 px-4 w-32 text-right font-bold">단가</th>
@@ -454,7 +454,7 @@ export default function App() {
                 <img 
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="max-w-[450px] rounded-lg" 
+                  className="max-w-[500px] rounded-lg" 
                   style={{ imageRendering: 'auto' }}
                 />
               </div>

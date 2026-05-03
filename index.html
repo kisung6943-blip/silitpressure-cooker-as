@@ -24,28 +24,23 @@
           display: none !important;
         }
         body {
-          background: #f8fafc !important; /* Preserve screen background */
+          background: #f8fafc !important;
           margin: 0 !important;
           padding: 0 !important;
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
         }
         #root {
-          transform: scale(0.85); /* Adjust scale as needed */
+          zoom: 0.72; /* Chrome/Edge/Safari */
+          transform: scale(0.72); /* Firefox */
           transform-origin: top center;
           width: 100%;
         }
-        /* Preserve some of the screen's visual richness */
         .shadow-[0_20px_50px_rgba(0,0,0,0.05)] {
           box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
         }
-        
-        /* Ensure table and photo fit well */
-        table {
-          width: 100% !important;
-        }
         img {
-          max-height: 300px !important;
+          max-height: 250px !important;
           object-fit: contain;
         }
       }

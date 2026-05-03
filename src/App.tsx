@@ -301,12 +301,11 @@ export default function App() {
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
             </div>
             <div className="flex items-end gap-2 group focus-within:border-blue-700 transition-colors">
-              <span className="text-2xl font-black text-slate-950 whitespace-nowrap">고객님</span>
               <input
                 type="text"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
-                className="text-2xl font-black text-slate-950 border-b-2 border-slate-200 focus:border-blue-700 focus:outline-none bg-transparent min-w-[150px]"
+                className="text-2xl font-black text-slate-950 border-b-2 border-slate-200 focus:border-blue-700 focus:outline-none bg-transparent min-w-[200px]"
                 placeholder="성함 입력"
               />
               <span className="text-xl font-bold text-slate-600 whitespace-nowrap">귀하</span>

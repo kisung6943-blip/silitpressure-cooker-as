@@ -43,6 +43,7 @@ export default function App() {
   });
   const [clientName, setClientName] = useState('고객님');
   const [date, setDate] = useState('');
+  const [bankType, setBankType] = useState<'nh' | 'shinhan'>('nh');
   const [referenceImage, setReferenceImage] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
@@ -60,6 +61,7 @@ export default function App() {
         if (parsed.provider) setProvider(parsed.provider);
         if (parsed.clientName) setClientName(parsed.clientName);
         if (parsed.date) setDate(parsed.date);
+        if (parsed.bankType) setBankType(parsed.bankType);
       } catch (e) {
         console.error("Failed to load saved data", e);
       }
@@ -74,7 +76,7 @@ export default function App() {
   // Auto-save logic
   const saveData = useCallback(() => {
     setIsSaving(true);
-    const data = { items, provider, clientName, date };
+    const data = { items, provider, clientName, date, bankType };
     localStorage.setItem('as-quotation-data', JSON.stringify(data));
     setTimeout(() => {
       setIsSaving(false);
@@ -87,7 +89,7 @@ export default function App() {
       saveData();
     }, 1000);
     return () => clearTimeout(timer);
-  }, [items, provider, clientName, date, saveData]);
+  }, [items, provider, clientName, date, bankType, saveData]);
 
   const totalAmount = items.reduce((sum, item) => sum + item.qty * item.price, 0);
 
@@ -134,7 +136,7 @@ export default function App() {
   };
 
   const handleExport = () => {
-    const data = { items, provider, clientName, date, version: '1.0' };
+    const data = { items, provider, clientName, date, bankType, version: '1.0' };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -157,6 +159,7 @@ export default function App() {
           if (parsed.provider) setProvider(parsed.provider);
           if (parsed.clientName) setClientName(parsed.clientName);
           if (parsed.date) setDate(parsed.date);
+          if (parsed.bankType) setBankType(parsed.bankType);
           alert("데이터를 성공적으로 불러왔습니다.");
         } catch (e) {
           alert("잘못된 파일 형식입니다.");
@@ -405,16 +408,34 @@ export default function App() {
 
         {/* Payment and Bank Account */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="md:col-span-2 flex flex-col gap-3 p-6 bg-slate-50 rounded-2xl border border-slate-200 border-dashed">
-            <div className="flex items-center gap-2">
-              <CreditCard size={18} className="text-slate-400" />
-              <h3 className="text-sm font-black uppercase tracking-wider text-slate-500">Payment Information</h3>
+          <div className="md:col-span-2 flex flex-col gap-3 p-6 bg-slate-50 rounded-2xl border border-slate-200 border-dashed relative group">
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-2">
+                <CreditCard size={18} className="text-slate-400" />
+                <h3 className="text-sm font-black uppercase tracking-wider text-slate-500">Payment Information</h3>
+              </div>
+              
+              <div className="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200 no-print">
+                <button 
+                  onClick={() => setBankType('nh')}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-lg transition-all ${bankType === 'nh' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:bg-slate-50'}`}
+                >
+                  농협
+                </button>
+                <button 
+                  onClick={() => setBankType('shinhan')}
+                  className={`px-3 py-1 text-[10px] font-bold rounded-lg transition-all ${bankType === 'shinhan' ? 'bg-blue-600 text-white shadow-md' : 'text-slate-400 hover:bg-slate-50'}`}
+                >
+                  신한
+                </button>
+              </div>
             </div>
+
             <div className="flex flex-col gap-1">
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <span className="font-bold text-slate-900">입금계좌:</span>
                 <span className="font-black text-blue-700 text-lg">
-                  {totalAmount > 100000 
+                  {bankType === 'nh' 
                     ? '농협 351-1237-0729-73 이에스리빙' 
                     : '신한은행 100-034-808558 이에스리빙'}
                 </span>

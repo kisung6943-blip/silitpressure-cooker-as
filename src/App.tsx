@@ -244,16 +244,16 @@ export default function App() {
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
         {/* Quotation Header */}
-        <div className="text-center mb-10 print:mb-6 relative">
-          <h2 className="text-4xl font-black tracking-tight text-slate-900 border-b-4 border-slate-900 inline-block pb-3 px-10 uppercase print:text-3xl print:pb-1">
+        <div className="text-center mb-6 print:mb-2 relative">
+          <h2 className="text-4xl font-black tracking-tight text-slate-900 border-b-4 border-slate-900 inline-block pb-3 px-10 uppercase print:text-2xl print:pb-0 print:border-b-2">
             견 적 서
           </h2>
           <p className="mt-4 text-slate-500 font-medium no-print">QUOTATION</p>
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-4 mb-10 print:mb-6">
-          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-4 mb-6 print:mb-2">
+          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-0 print:pl-3">
             <div className="flex items-center gap-2 mb-1 text-slate-400">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
@@ -277,7 +277,7 @@ export default function App() {
             <div className="absolute -top-3 left-6 bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[10px] uppercase tracking-widest shadow-sm">
               Provider
             </div>
-            <div className="space-y-3 mt-2">
+            <div className="space-y-3 mt-2 print:space-y-1 print:mt-1">
               {[
                 { label: '상호', key: 'company', icon: <FileText size={14} /> },
                 { label: '담당자', key: 'manager', icon: <User size={14} /> },
@@ -299,8 +299,8 @@ export default function App() {
         </div>
 
         {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 print:mb-4 gap-4 py-6 print:py-2 border-y-2 border-slate-900">
-          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-white px-4 py-2 rounded-xl">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 print:mb-2 gap-4 py-6 print:py-1 border-y-2 border-slate-900 print:border-y">
+          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-white px-4 py-2 rounded-xl print:px-0 print:py-0">
             <Calendar size={18} className="text-blue-600" />
             <span className="font-bold text-sm">작성일:</span>
             <input
@@ -385,11 +385,11 @@ export default function App() {
               </AnimatePresence>
             </tbody>
             <tfoot>
-              <tr className="bg-slate-50 font-black border-t-2 border-slate-200">
-                <td colSpan={4} className="py-5 px-6 text-right text-slate-500 uppercase tracking-widest">
+              <tr className="bg-slate-50 print:bg-white font-black border-t-2 border-slate-200 print:border-t">
+                <td colSpan={4} className="py-5 print:py-1 px-6 text-right text-slate-500 uppercase tracking-widest text-[10px]">
                   합 계 (SUBTOTAL)
                 </td>
-                <td className="py-5 px-6 text-right text-xl text-blue-700">
+                <td className="py-5 print:py-1 px-6 text-right text-xl print:text-base text-blue-700">
                   {formatCurrency(totalAmount)}
                 </td>
                 <td className="no-print"></td>
@@ -408,7 +408,7 @@ export default function App() {
 
         {/* Payment and Bank Account */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="md:col-span-2 flex flex-col gap-2 p-6 print:p-2 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
+          <div className="md:col-span-2 flex flex-col gap-2 p-6 print:p-1 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
                 <CreditCard size={18} className="text-slate-400 no-print" />
@@ -463,11 +463,11 @@ export default function App() {
         </div>
 
         {/* Parts Reference Section */}
-        <div className="mt-10 print:mt-4 pt-10 print:pt-4 border-t-2 border-slate-100 print-avoid-break page-break-before">
-          <div className="flex justify-between items-center mb-6 print:mb-2">
+        <div className="mt-10 print:mt-2 pt-10 print:pt-2 border-t-2 border-slate-100 print:border-t print-avoid-break">
+          <div className="flex justify-between items-center mb-6 print:mb-1">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-slate-900 rounded-full no-print" />
-              <h2 className="text-2xl print:text-lg font-black tracking-tight text-slate-900">
+              <h2 className="text-2xl print:text-sm font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
               </h2>
             </div>
@@ -480,7 +480,7 @@ export default function App() {
             )}
           </div>
           
-          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 min-h-[400px] print:min-h-[250px] group">
+          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 min-h-[400px] print:min-h-0 group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 
@@ -488,7 +488,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-3xl print:max-w-xl mx-auto rounded-xl shadow-2xl print:shadow-none" 
+                  className="w-full max-w-3xl print:max-w-md mx-auto rounded-xl shadow-2xl print:shadow-none" 
                 />
                 <button 
                   onClick={handleImageRemove}

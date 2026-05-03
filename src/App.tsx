@@ -136,25 +136,48 @@ export default function App() {
   };
 
   const handleDownloadImage = () => {
+    if (!(window as any).html2canvas) {
+      alert("이미지 생성 도구가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.");
+      return;
+    }
+
     const element = document.getElementById('quotation-card');
     if (!element) return;
     
+    setIsSaving(true);
+    
     // Temporarily hide things we don't want in the image
     const noPrintElements = element.querySelectorAll('.no-print');
-    noPrintElements.forEach(el => (el as HTMLElement).style.display = 'none');
+    noPrintElements.forEach(el => (el as HTMLElement).style.setProperty('display', 'none', 'important'));
 
     (window as any).html2canvas(element, {
-      scale: 2, // High resolution
+      scale: 2,
       useCORS: true,
-      backgroundColor: '#f8fafc'
+      allowTaint: true,
+      backgroundColor: '#f8fafc',
+      logging: false,
     }).then((canvas: HTMLCanvasElement) => {
-      const link = document.createElement('a');
-      link.download = `견적서_${clientName || '고객'}_${new Date().toISOString().split('T')[0]}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-      
-      // Restore hidden elements
+      try {
+        const link = document.createElement('a');
+        const fileName = `견적서_${clientName.replace(/\s/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
+        link.download = fileName;
+        link.href = canvas.toDataURL('image/png');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        alert("이미지 다운로드가 시작되었습니다.");
+      } catch (err) {
+        console.error("Image generation failed:", err);
+        alert("이미지 생성 중 오류가 발생했습니다. '출력하기' 버튼을 이용해 PDF로 저장해 주세요.");
+      } finally {
+        noPrintElements.forEach(el => (el as HTMLElement).style.display = '');
+        setIsSaving(false);
+      }
+    }).catch((err: any) => {
+      console.error("html2canvas error:", err);
+      alert("이미지 처리 중 오류가 발생했습니다.");
       noPrintElements.forEach(el => (el as HTMLElement).style.display = '');
+      setIsSaving(false);
     });
   };
 

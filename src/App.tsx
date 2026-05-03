@@ -252,8 +252,8 @@ export default function App() {
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-4 mb-6 print:mb-2">
-          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-0 print:pl-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-2 mb-4 print:mb-1">
+          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-0 print:pl-3 print:border-l-2">
             <div className="flex items-center gap-2 mb-1 text-slate-400">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
@@ -277,7 +277,7 @@ export default function App() {
             <div className="absolute -top-3 left-6 bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[10px] uppercase tracking-widest shadow-sm">
               Provider
             </div>
-            <div className="space-y-3 mt-2 print:space-y-1 print:mt-1">
+            <div className="space-y-3 mt-2 print:space-y-0.5 print:mt-0">
               {[
                 { label: '상호', key: 'company', icon: <FileText size={14} /> },
                 { label: '담당자', key: 'manager', icon: <User size={14} /> },
@@ -299,7 +299,7 @@ export default function App() {
         </div>
 
         {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 print:mb-2 gap-4 py-6 print:py-1 border-y-2 border-slate-900 print:border-y">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 print:mb-1 gap-4 py-6 print:py-1 border-y-2 border-slate-900 print:border-y">
           <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-white px-4 py-2 rounded-xl print:px-0 print:py-0">
             <Calendar size={18} className="text-blue-600" />
             <span className="font-bold text-sm">작성일:</span>
@@ -317,11 +317,11 @@ export default function App() {
         </div>
 
         {/* Items Table */}
-        <div className="mb-6 print:mb-4 overflow-hidden rounded-2xl border border-slate-200 print:rounded-none">
+        <div className="mb-4 print:mb-1 overflow-hidden rounded-2xl border border-slate-200 print:rounded-none">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-slate-900 text-white print:bg-slate-100 print:text-slate-900">
-                <th className="py-4 print:py-2 px-4 w-12 text-center font-bold">NO</th>
+              <tr className="bg-slate-900 text-white print:bg-slate-50 print:text-slate-900">
+                <th className="py-4 print:py-1 px-4 w-12 text-center font-bold">NO</th>
                 <th className="py-4 print:py-2 px-4 text-left font-bold uppercase tracking-wider">품목명 / Item Description</th>
                 <th className="py-4 px-2 w-20 text-center font-bold">수량</th>
                 <th className="py-4 px-4 w-32 text-right font-bold">단가</th>
@@ -407,12 +407,12 @@ export default function App() {
         </button>
 
         {/* Payment and Bank Account */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="md:col-span-2 flex flex-col gap-2 p-6 print:p-1 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
+        <div className="flex flex-col md:flex-row justify-between gap-6 mb-4 print:mb-0">
+          <div className="flex-1 flex flex-col gap-2 p-6 print:p-0 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
                 <CreditCard size={18} className="text-slate-400 no-print" />
-                <h3 className="text-sm font-black uppercase tracking-wider text-slate-500">Payment Information</h3>
+                <h3 className="text-sm font-black uppercase tracking-wider text-slate-500 print:text-[10px]">Payment Information</h3>
               </div>
               
               <div className="flex bg-white p-1 rounded-xl shadow-sm border border-slate-200 no-print">
@@ -433,23 +433,23 @@ export default function App() {
 
             <div className="flex flex-col gap-1">
               <div className="flex gap-2 items-center">
-                <span className="font-bold text-slate-900">입금계좌:</span>
-                <span className="font-black text-blue-700 text-lg">
+                <span className="font-bold text-slate-900 text-sm print:text-[10px]">입금계좌:</span>
+                <span className="font-black text-blue-700 text-lg print:text-sm">
                   {bankType === 'nh' 
                     ? '농협 351-1237-0729-73 이에스리빙' 
                     : '신한은행 100-034-808558 이에스리빙'}
                 </span>
               </div>
               {bankType === 'nh' && (
-                <div className="inline-flex items-center gap-2 text-rose-600 font-bold text-xs bg-rose-50 px-3 py-1 rounded-full w-fit mt-1">
-                  <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
+                <div className="inline-flex items-center gap-2 text-rose-600 font-bold text-[10px] bg-rose-50 print:bg-white px-3 py-0 rounded-full w-fit mt-0.5 no-print">
+                  <span className="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse no-print" />
                   ※ 고객님 전화번호로 현금영수증이 자동 발행됩니다.
                 </div>
               )}
             </div>
           </div>
           
-          <div className="flex flex-col justify-center items-end pr-8 print:pr-0">
+          <div className="flex flex-col justify-center items-end pr-8 no-print">
             <div className="text-center">
               <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 print:mb-2">Authorized Signature</p>
               <div className="relative inline-block">
@@ -463,11 +463,11 @@ export default function App() {
         </div>
 
         {/* Parts Reference Section */}
-        <div className="mt-10 print:mt-2 pt-10 print:pt-2 border-t-2 border-slate-100 print:border-t print-avoid-break">
-          <div className="flex justify-between items-center mb-6 print:mb-1">
+        <div className="mt-4 print:mt-0 pt-4 print:pt-0 border-t-2 border-slate-100 print:border-none print-avoid-break">
+          <div className="flex justify-between items-center mb-6 print:mb-0">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-8 bg-slate-900 rounded-full no-print" />
-              <h2 className="text-2xl print:text-sm font-black tracking-tight text-slate-900">
+              <h2 className="text-2xl print:text-[10px] font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
               </h2>
             </div>
@@ -488,7 +488,8 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-3xl print:max-w-md mx-auto rounded-xl shadow-2xl print:shadow-none" 
+                  className="w-full max-w-3xl print:max-w-full mx-auto rounded-xl shadow-2xl print:shadow-none" 
+                  style={{ imageRendering: 'auto' }}
                 />
                 <button 
                   onClick={handleImageRemove}

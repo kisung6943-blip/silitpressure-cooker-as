@@ -147,10 +147,10 @@ export default function App() {
     
     setIsSaving(true);
     
-    // Use toPng with options for better quality
+    // Use toPng with higher resolution
     htmlToImage.toPng(element, {
       quality: 1.0,
-      pixelRatio: 2,
+      pixelRatio: 3, // Increased for ultra-high resolution
       backgroundColor: '#f8fafc',
       style: {
         transform: 'scale(1)',
@@ -295,29 +295,27 @@ export default function App() {
         
         {/* Quotation Header */}
         <div className="text-center mb-6 print:mb-2 relative">
-          <h2 className="text-4xl font-black tracking-tight text-slate-900 border-b-4 border-slate-900 inline-block pb-3 px-10 uppercase print:text-2xl print:pb-0 print:border-b-2">
+          <h2 className="text-4xl font-black tracking-tight text-slate-950 border-b-4 border-slate-950 inline-block pb-3 px-10 uppercase print:text-2xl print:pb-0 print:border-b-2">
             견 적 서
           </h2>
-          <p className="mt-4 text-slate-500 font-medium no-print">QUOTATION</p>
+          <p className="mt-4 text-slate-600 font-bold no-print">QUOTATION</p>
         </div>
 
         {/* Info Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-6">
-          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-2">
-            <div className="flex items-center gap-2 mb-1 text-slate-400">
+          <div className="flex flex-col justify-end border-l-4 border-blue-700 pl-6 py-2 print:py-2">
+            <div className="flex items-center gap-2 mb-1 text-slate-500">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
             </div>
-            <div className="flex items-end gap-2 border-b-2 border-slate-200 pb-1 group focus-within:border-blue-500 transition-colors">
+            <div className="flex items-end gap-2 border-b-2 border-slate-900 pb-1 group focus-within:border-blue-700 transition-colors">
               <input
                 type="text"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
-                className="text-2xl font-black w-full focus:outline-none bg-transparent"
+                className="text-2xl font-black text-slate-950 w-full focus:outline-none bg-transparent"
                 placeholder="고객명 입력"
               />
-              <span className="text-xl font-bold text-slate-600 whitespace-nowrap">귀하</span>
-            </div>
             <div className="mt-4 text-sm text-slate-500 font-medium italic">
               아래와 같이 견적을 제출합니다.
             </div>

@@ -287,14 +287,14 @@ export default function App() {
         id="quotation-card"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-[#f8fafc] p-8 sm:p-14 mb-8 print:mb-0 relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-[#f8fafc] p-4 sm:p-6 mb-8 print:mb-0 relative overflow-hidden"
       >
-        <div className="bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl relative overflow-hidden print:shadow-none print:p-0 print:rounded-none">
+        <div className="bg-white p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl relative overflow-hidden print:shadow-none print:p-0 print:rounded-none">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
         {/* Quotation Header */}
-        <div className="text-center mb-6 print:mb-2 relative">
+        <div className="text-center mb-4 print:mb-2 relative">
           <h2 className="text-4xl font-black tracking-tight text-slate-950 border-b-4 border-slate-950 inline-block pb-3 px-10 uppercase print:text-2xl print:pb-0 print:border-b-2">
             견 적 서
           </h2>
@@ -302,7 +302,7 @@ export default function App() {
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
           <div className="flex flex-col justify-end border-l-4 border-blue-700 pl-6 py-2 print:py-2">
             <div className="flex items-center gap-2 mb-1 text-slate-500">
               <User size={14} />
@@ -347,7 +347,7 @@ export default function App() {
         </div>
 
         {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 print:mb-4 gap-4 py-6 print:py-4 border-y-2 border-slate-900 print:border-y-2">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4 py-4 border-y-2 border-slate-900">
           <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-slate-50 px-4 py-2 rounded-xl print:px-4 print:py-2">
             <Calendar size={18} className="text-blue-600" />
             <span className="font-bold text-sm">작성일:</span>
@@ -540,7 +540,7 @@ export default function App() {
             )}
           </div>
           
-          <div className="bg-slate-50 rounded-3xl p-4 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center min-h-[400px] group">
+          <div className="bg-slate-50 rounded-2xl p-2 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center min-h-[300px] group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 
@@ -548,7 +548,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl" 
+                  className="w-full max-w-2xl mx-auto rounded-xl shadow-xl" 
                 />
                 <button 
                   onClick={handleImageRemove}

@@ -238,7 +238,7 @@ export default function App() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:shadow-none print:p-0 print:rounded-none print:mb-0 relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:mb-0 relative overflow-hidden"
       >
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
@@ -252,8 +252,8 @@ export default function App() {
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-2">
-          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-1 print:pl-6 print:border-l-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-12 mb-4 print:mb-6">
+          <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2 print:py-2">
             <div className="flex items-center gap-2 mb-1 text-slate-400">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
@@ -299,8 +299,8 @@ export default function App() {
         </div>
 
         {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 print:mb-1 gap-4 py-6 print:py-1 border-y-2 border-slate-900 print:border-y">
-          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-white px-4 py-2 rounded-xl print:px-0 print:py-0">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 print:mb-4 gap-4 py-6 print:py-4 border-y-2 border-slate-900 print:border-y-2">
+          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-slate-50 px-4 py-2 rounded-xl print:px-4 print:py-2">
             <Calendar size={18} className="text-blue-600" />
             <span className="font-bold text-sm">작성일:</span>
             <input

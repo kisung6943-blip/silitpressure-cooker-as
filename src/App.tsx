@@ -238,7 +238,7 @@ export default function App() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:max-w-none print:w-full print:p-6 print:m-0 print:rounded-none relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:max-w-none print:w-full print:p-8 print:m-0 print:rounded-none relative overflow-hidden"
       >
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />

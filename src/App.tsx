@@ -440,10 +440,10 @@ export default function App() {
                     : '신한은행 100-034-808558 이에스리빙'}
                 </span>
               </div>
-              {totalAmount >= 100000 && (
+              {bankType === 'nh' && (
                 <div className="inline-flex items-center gap-2 text-rose-600 font-bold text-xs bg-rose-50 px-3 py-1 rounded-full w-fit mt-1">
                   <span className="w-2 h-2 bg-rose-500 rounded-full animate-pulse" />
-                  ※ 10만원 이상 결제 시 현금영수증 자동발행 대상입니다.
+                  ※ 고객님 전화번호로 현금영수증이 자동 발행됩니다.
                 </div>
               )}
             </div>

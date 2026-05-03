@@ -293,56 +293,31 @@ export default function App() {
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
-        {/* Quotation Header */}
-        <div className="text-center mb-4 print:mb-2 relative">
-          <h2 className="text-4xl font-black tracking-tight text-slate-950 border-b-4 border-slate-950 inline-block pb-3 px-10 uppercase print:text-2xl print:pb-0 print:border-b-2">
-            견 적 서
-          </h2>
-          <p className="mt-4 text-slate-600 font-bold no-print">QUOTATION</p>
-        </div>
-
-        {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
-          <div className="flex flex-col justify-end border-l-4 border-blue-700 pl-6 py-2 print:py-2">
-            <div className="flex items-center gap-2 mb-1 text-slate-500">
+        {/* Simplified Header Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-end gap-4 mb-4 border-b-2 border-slate-950 pb-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1 text-slate-500 no-print">
               <User size={14} />
               <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
             </div>
-            <div className="flex items-end gap-2 border-b-2 border-slate-900 pb-1 group focus-within:border-blue-700 transition-colors">
+            <div className="flex items-end gap-2 group focus-within:border-blue-700 transition-colors">
+              <span className="text-2xl font-black text-slate-950 whitespace-nowrap">고객님</span>
               <input
                 type="text"
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
-                className="text-2xl font-black text-slate-950 w-full focus:outline-none bg-transparent"
-                placeholder="고객명 입력"
+                className="text-2xl font-black text-slate-950 border-b-2 border-slate-200 focus:border-blue-700 focus:outline-none bg-transparent min-w-[150px]"
+                placeholder="성함 입력"
               />
-            <div className="mt-4 text-sm text-slate-500 font-medium italic">
-              아래와 같이 견적을 제출합니다.
+              <span className="text-xl font-bold text-slate-600 whitespace-nowrap">귀하</span>
             </div>
           </div>
-
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 relative">
-            <div className="absolute -top-3 left-6 bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[10px] uppercase tracking-widest shadow-sm">
-              Provider
-            </div>
-            <div className="space-y-3 mt-2 print:space-y-0.5 print:mt-0">
-              {[
-                { label: '상호', key: 'company', icon: <FileText size={14} /> },
-                { label: '담당자', key: 'manager', icon: <User size={14} /> },
-                { label: '연락처', key: 'phone', icon: <CreditCard size={14} /> },
-                { label: '이메일', key: 'email', icon: <Calendar size={14} /> },
-              ].map((item) => (
-                <div key={item.key} className="flex items-center gap-3">
-                  <span className="w-16 text-xs font-bold text-slate-400">{item.label}</span>
-                  <input
-                    type="text"
-                    className="flex-1 text-sm font-semibold bg-transparent border-b border-transparent hover:border-slate-300 focus:border-blue-400 focus:outline-none transition-colors"
-                    value={provider[item.key as keyof Provider]}
-                    onChange={(e) => setProvider({ ...provider, [item.key]: e.target.value })}
-                  />
-                </div>
-              ))}
-            </div>
+          
+          <div className="text-right">
+            <h2 className="text-4xl font-black tracking-tight text-slate-950 uppercase leading-none">
+              견 적 서
+            </h2>
+            <p className="text-[10px] text-slate-600 font-bold mt-2 no-print">QUOTATION</p>
           </div>
         </div>
 

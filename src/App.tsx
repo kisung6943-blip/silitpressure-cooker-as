@@ -238,21 +238,21 @@ export default function App() {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:shadow-none print:p-0 print:rounded-none relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:shadow-none print:p-0 print:rounded-none print:mb-0 relative overflow-hidden"
       >
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
         {/* Quotation Header */}
-        <div className="text-center mb-16 relative">
-          <h2 className="text-4xl font-black tracking-tight text-slate-900 border-b-4 border-slate-900 inline-block pb-3 px-10 uppercase">
+        <div className="text-center mb-10 print:mb-6 relative">
+          <h2 className="text-4xl font-black tracking-tight text-slate-900 border-b-4 border-slate-900 inline-block pb-3 px-10 uppercase print:text-3xl print:pb-1">
             견 적 서
           </h2>
           <p className="mt-4 text-slate-500 font-medium no-print">QUOTATION</p>
         </div>
 
         {/* Info Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 print:gap-4 mb-10 print:mb-6">
           <div className="flex flex-col justify-end border-l-4 border-blue-600 pl-6 py-2">
             <div className="flex items-center gap-2 mb-1 text-slate-400">
               <User size={14} />
@@ -299,8 +299,8 @@ export default function App() {
         </div>
 
         {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4 py-6 border-y-2 border-slate-900">
-          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 px-4 py-2 rounded-xl">
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 print:mb-4 gap-4 py-6 print:py-2 border-y-2 border-slate-900">
+          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-white px-4 py-2 rounded-xl">
             <Calendar size={18} className="text-blue-600" />
             <span className="font-bold text-sm">작성일:</span>
             <input
@@ -310,19 +310,19 @@ export default function App() {
               onChange={(e) => setDate(e.target.value)}
             />
           </div>
-          <div className="text-2xl font-black text-slate-900 flex gap-6 items-baseline">
+          <div className="text-2xl font-black text-slate-900 flex gap-6 items-baseline print:text-xl">
             <span className="text-sm font-bold text-slate-500 uppercase tracking-tighter">TOTAL (VAT Incl.)</span>
             <span className="text-blue-600">{formatCurrency(totalAmount)}</span>
           </div>
         </div>
 
         {/* Items Table */}
-        <div className="mb-8 overflow-hidden rounded-2xl border border-slate-200">
+        <div className="mb-6 print:mb-4 overflow-hidden rounded-2xl border border-slate-200 print:rounded-none">
           <table className="w-full border-collapse text-sm">
             <thead>
-              <tr className="bg-slate-900 text-white">
-                <th className="py-4 px-4 w-12 text-center font-bold">NO</th>
-                <th className="py-4 px-4 text-left font-bold uppercase tracking-wider">품목명 / Item Description</th>
+              <tr className="bg-slate-900 text-white print:bg-slate-100 print:text-slate-900">
+                <th className="py-4 print:py-2 px-4 w-12 text-center font-bold">NO</th>
+                <th className="py-4 print:py-2 px-4 text-left font-bold uppercase tracking-wider">품목명 / Item Description</th>
                 <th className="py-4 px-2 w-20 text-center font-bold">수량</th>
                 <th className="py-4 px-4 w-32 text-right font-bold">단가</th>
                 <th className="py-4 px-4 w-32 text-right font-bold">금액</th>
@@ -408,10 +408,10 @@ export default function App() {
 
         {/* Payment and Bank Account */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="md:col-span-2 flex flex-col gap-3 p-6 bg-slate-50 rounded-2xl border border-slate-200 border-dashed relative group">
+          <div className="md:col-span-2 flex flex-col gap-2 p-6 print:p-2 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
-                <CreditCard size={18} className="text-slate-400" />
+                <CreditCard size={18} className="text-slate-400 no-print" />
                 <h3 className="text-sm font-black uppercase tracking-wider text-slate-500">Payment Information</h3>
               </div>
               
@@ -449,12 +449,12 @@ export default function App() {
             </div>
           </div>
           
-          <div className="flex flex-col justify-center items-end pr-8">
+          <div className="flex flex-col justify-center items-end pr-8 print:pr-0">
             <div className="text-center">
-              <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Authorized Signature</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 print:mb-2">Authorized Signature</p>
               <div className="relative inline-block">
-                <span className="text-2xl font-black text-slate-900 tracking-tighter">{provider.company}</span>
-                <div className="absolute -right-12 -top-4 w-16 h-16 border-4 border-rose-600 rounded-full flex items-center justify-center text-rose-600 font-black text-xl rotate-12 opacity-80 border-double">
+                <span className="text-2xl font-black text-slate-900 tracking-tighter print:text-xl">{provider.company}</span>
+                <div className="absolute -right-12 -top-4 w-16 h-16 border-4 border-rose-600 rounded-full flex items-center justify-center text-rose-600 font-black text-xl rotate-12 opacity-80 border-double print:w-12 print:h-12 print:text-base print:-right-10 print:-top-2">
                   인
                 </div>
               </div>
@@ -463,11 +463,11 @@ export default function App() {
         </div>
 
         {/* Parts Reference Section */}
-        <div className="mt-20 pt-10 border-t-2 border-slate-100 print-avoid-break page-break-before">
-          <div className="flex justify-between items-center mb-6">
+        <div className="mt-10 print:mt-4 pt-10 print:pt-4 border-t-2 border-slate-100 print-avoid-break page-break-before">
+          <div className="flex justify-between items-center mb-6 print:mb-2">
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-slate-900 rounded-full" />
-              <h2 className="text-2xl font-black tracking-tight text-slate-900">
+              <div className="w-1.5 h-8 bg-slate-900 rounded-full no-print" />
+              <h2 className="text-2xl print:text-lg font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
               </h2>
             </div>
@@ -480,7 +480,7 @@ export default function App() {
             )}
           </div>
           
-          <div className="bg-slate-50 rounded-3xl p-4 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center print:border-none print:p-0 min-h-[400px] group">
+          <div className="bg-slate-50 print:bg-white rounded-3xl p-4 border-2 border-slate-100 border-dashed print:border-none relative flex flex-col items-center justify-center print:p-0 min-h-[400px] print:min-h-[250px] group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 
@@ -488,7 +488,7 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   src={referenceImage} 
                   alt="압력솥 부품 명칭" 
-                  className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl" 
+                  className="w-full max-w-3xl print:max-w-xl mx-auto rounded-xl shadow-2xl print:shadow-none" 
                 />
                 <button 
                   onClick={handleImageRemove}

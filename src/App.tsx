@@ -135,6 +135,29 @@ export default function App() {
     localStorage.removeItem('partsImage');
   };
 
+  const handleDownloadImage = () => {
+    const element = document.getElementById('quotation-card');
+    if (!element) return;
+    
+    // Temporarily hide things we don't want in the image
+    const noPrintElements = element.querySelectorAll('.no-print');
+    noPrintElements.forEach(el => (el as HTMLElement).style.display = 'none');
+
+    (window as any).html2canvas(element, {
+      scale: 2, // High resolution
+      useCORS: true,
+      backgroundColor: '#f8fafc'
+    }).then((canvas: HTMLCanvasElement) => {
+      const link = document.createElement('a');
+      link.download = `견적서_${clientName || '고객'}_${new Date().toISOString().split('T')[0]}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      // Restore hidden elements
+      noPrintElements.forEach(el => (el as HTMLElement).style.display = '');
+    });
+  };
+
   const handleExport = () => {
     const data = { items, provider, clientName, date, bankType, version: '1.0' };
     const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -225,6 +248,13 @@ export default function App() {
               <span>초기화</span>
             </button>
             <button
+              onClick={handleDownloadImage}
+              className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-emerald-200 transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <ImageIcon size={18} />
+              <span>이미지로 저장</span>
+            </button>
+            <button
               onClick={() => window.print()}
               className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 transition-all hover:scale-[1.02] active:scale-95"
             >
@@ -236,10 +266,12 @@ export default function App() {
       </div>
 
       <motion.div 
+        id="quotation-card"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl mb-8 print:max-w-none print:w-full print:p-8 print:m-0 print:rounded-none relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-[#f8fafc] p-8 sm:p-14 mb-8 print:mb-0 relative overflow-hidden"
       >
+        <div className="bg-white p-8 sm:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl relative overflow-hidden print:shadow-none print:p-0 print:rounded-none">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
@@ -529,6 +561,7 @@ export default function App() {
 
         <div className="mt-20 text-center text-[10px] text-slate-300 font-bold uppercase tracking-[0.2em] no-print">
           &copy; {new Date().getFullYear()} ES LIVING SYSTEM. ALL RIGHTS RESERVED.
+        </div>
         </div>
       </motion.div>
     </div>

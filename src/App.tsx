@@ -136,8 +136,9 @@ export default function App() {
   };
 
   const handleDownloadImage = () => {
-    if (!(window as any).html2canvas) {
-      alert("이미지 생성 도구가 아직 로드되지 않았습니다. 잠시 후 다시 시도해주세요.");
+    const htmlToImage = (window as any).htmlToImage;
+    if (!htmlToImage) {
+      alert("이미지 도구가 로드되지 않았습니다. 새로고침 후 다시 시도해주세요.");
       return;
     }
 
@@ -146,37 +147,31 @@ export default function App() {
     
     setIsSaving(true);
     
-    // Temporarily hide things we don't want in the image
-    const noPrintElements = element.querySelectorAll('.no-print');
-    noPrintElements.forEach(el => (el as HTMLElement).style.setProperty('display', 'none', 'important'));
-
-    (window as any).html2canvas(element, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
+    // Use toPng with options for better quality
+    htmlToImage.toPng(element, {
+      quality: 1.0,
+      pixelRatio: 2,
       backgroundColor: '#f8fafc',
-      logging: false,
-    }).then((canvas: HTMLCanvasElement) => {
-      try {
-        const link = document.createElement('a');
-        const fileName = `견적서_${clientName.replace(/\s/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
-        link.download = fileName;
-        link.href = canvas.toDataURL('image/png');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        alert("이미지 다운로드가 시작되었습니다.");
-      } catch (err) {
-        console.error("Image generation failed:", err);
-        alert("이미지 생성 중 오류가 발생했습니다. '출력하기' 버튼을 이용해 PDF로 저장해 주세요.");
-      } finally {
-        noPrintElements.forEach(el => (el as HTMLElement).style.display = '');
-        setIsSaving(false);
+      style: {
+        transform: 'scale(1)',
+        margin: '0',
+      },
+      filter: (node: HTMLElement) => {
+        return !node.classList?.contains('no-print');
       }
-    }).catch((err: any) => {
-      console.error("html2canvas error:", err);
-      alert("이미지 처리 중 오류가 발생했습니다.");
-      noPrintElements.forEach(el => (el as HTMLElement).style.display = '');
+    })
+    .then((dataUrl: string) => {
+      const link = document.createElement('a');
+      link.download = `견적서_${clientName.replace(/\s/g, '_')}_${new Date().toISOString().split('T')[0]}.png`;
+      link.href = dataUrl;
+      link.click();
+      alert("이미지 다운로드가 완료되었습니다!");
+    })
+    .catch((err: any) => {
+      console.error("html-to-image error:", err);
+      alert("이미지 생성 중 오류가 발생했습니다. 'PDF 다운로드' 기능을 권장합니다.");
+    })
+    .finally(() => {
       setIsSaving(false);
     });
   };

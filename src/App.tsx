@@ -343,11 +343,11 @@ export default function App() {
           <table className="w-full border-collapse text-sm print:text-xs">
             <thead>
               <tr className="bg-slate-900 text-white print:bg-slate-50 print:text-slate-900">
-                <th className="py-4 print:py-2 px-4 w-12 text-center font-bold">NO</th>
-                <th className="py-4 print:py-2 px-4 text-left font-bold uppercase tracking-wider">품목명 / Item Description</th>
-                <th className="py-4 px-2 w-20 text-center font-bold">수량</th>
-                <th className="py-4 px-4 w-32 text-right font-bold">단가</th>
-                <th className="py-4 px-4 w-32 text-right font-bold">금액</th>
+                <th className="py-2 px-4 w-12 text-center font-black">NO</th>
+                <th className="py-2 px-4 text-left font-black uppercase tracking-wider text-base">품목명 / ITEM DESCRIPTION</th>
+                <th className="py-2 px-2 w-20 text-center font-black">수량</th>
+                <th className="py-2 px-4 w-32 text-right font-black">단가</th>
+                <th className="py-2 px-4 w-32 text-right font-black">금액</th>
                 <th className="w-12 no-print"></th>
               </tr>
             </thead>
@@ -361,11 +361,11 @@ export default function App() {
                     exit={{ opacity: 0, x: -20 }}
                     className="group hover:bg-slate-50 transition-colors"
                   >
-                    <td className="py-4 px-4 text-center text-slate-400 font-medium">{index + 1}</td>
+                    <td className="py-2 px-4 text-center text-slate-500 font-bold text-base">{index + 1}</td>
                     <td className="p-0">
                       <input
                         type="text"
-                        className="w-full h-full py-4 px-4 focus:outline-none font-semibold bg-transparent"
+                        className="w-full h-full py-2 px-4 focus:outline-none font-bold bg-transparent text-lg text-slate-950"
                         value={item.name}
                         onChange={(e) => handleItemChange(item.id, 'name', e.target.value)}
                         placeholder="품목 입력"
@@ -374,7 +374,7 @@ export default function App() {
                     <td className="p-0">
                       <input
                         type="number"
-                        className="w-full h-full py-4 px-2 focus:outline-none text-center bg-transparent font-medium"
+                        className="w-full h-full py-2 px-2 focus:outline-none text-center bg-transparent font-bold text-base text-slate-900"
                         value={item.qty === 0 ? '' : item.qty}
                         onChange={(e) => handleItemChange(item.id, 'qty', parseInt(e.target.value) || 0)}
                         min="0"
@@ -383,14 +383,14 @@ export default function App() {
                     <td className="p-0">
                       <input
                         type="number"
-                        className="w-full h-full py-4 px-4 focus:outline-none text-right bg-transparent font-medium"
+                        className="w-full h-full py-2 px-4 focus:outline-none text-right bg-transparent font-bold text-base text-slate-900"
                         value={item.price === 0 ? '' : item.price}
                         onChange={(e) => handleItemChange(item.id, 'price', parseInt(e.target.value) || 0)}
                         min="0"
                         step="100"
                       />
                     </td>
-                    <td className="py-4 px-4 text-right font-bold text-slate-700">
+                    <td className="py-2 px-4 text-right font-black text-slate-950 text-base">
                       {item.qty > 0 && item.price > 0 ? formatCurrency(item.qty * item.price) : '-'}
                     </td>
                     <td className="p-1 text-center no-print">

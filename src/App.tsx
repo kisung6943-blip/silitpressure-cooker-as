@@ -287,19 +287,19 @@ export default function App() {
         id="quotation-card"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-4xl mx-auto bg-[#f8fafc] p-4 sm:p-6 mb-8 print:mb-0 relative overflow-hidden"
+        className="max-w-4xl mx-auto bg-[#f8fafc] p-2 sm:p-3 mb-4 print:mb-0 relative overflow-hidden"
       >
-        <div className="bg-white p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl relative overflow-hidden print:shadow-none print:p-0 print:rounded-none">
+        <div className="bg-white p-3 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-3xl relative overflow-hidden print:shadow-none print:p-0 print:rounded-none">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-600 via-blue-400 to-indigo-600 no-print" />
         
         {/* Simplified Header Section */}
-        <div className="flex flex-col sm:flex-row justify-between items-end gap-4 mb-4 border-b-2 border-slate-950 pb-4">
+        <div className="flex flex-col sm:flex-row justify-between items-end gap-2 mb-2 border-b-2 border-slate-950 pb-2">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1 text-slate-500 no-print">
-              <User size={14} />
-              <span className="text-xs font-bold uppercase tracking-wider">Client Info</span>
-            </div>
+        {/* Simplified Header Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-end gap-2 mb-2 border-b-2 border-slate-950 pb-1">
+          <div className="flex-1">
             <div className="flex items-end gap-2 group focus-within:border-blue-700 transition-colors">
               <input
                 type="text"
@@ -313,28 +313,30 @@ export default function App() {
           </div>
           
           <div className="text-right">
-            <h2 className="text-4xl font-black tracking-tight text-slate-950 uppercase leading-none">
+            <h2 className="text-3xl font-black tracking-tight text-slate-950 uppercase leading-none">
               견 적 서
             </h2>
-            <p className="text-[10px] text-slate-600 font-bold mt-2 no-print">QUOTATION</p>
           </div>
         </div>
 
-        {/* Date and Total Summary */}
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4 py-4 border-y-2 border-slate-900">
-          <div className="flex gap-3 text-slate-700 items-center bg-slate-50 print:bg-slate-50 px-4 py-2 rounded-xl print:px-4 print:py-2">
-            <Calendar size={18} className="text-blue-600" />
-            <span className="font-bold text-sm">작성일:</span>
+        {/* Date and Total Summary (Ultra Compact) */}
+        <div className="flex flex-row justify-between items-center mb-1 gap-4 py-1.5">
+          <div className="flex gap-2 text-slate-700 items-center bg-slate-50 px-3 py-1 rounded-lg">
+            <Calendar size={14} className="text-blue-600" />
+            <span className="font-bold text-xs text-slate-500">작성일:</span>
             <input
               type="text"
-              className="w-40 font-bold text-sm focus:outline-none bg-transparent"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              className="bg-transparent border-none focus:outline-none font-bold text-xs w-24"
             />
           </div>
-          <div className="text-2xl font-black text-slate-900 flex gap-6 items-baseline print:text-xl">
-            <span className="text-sm font-bold text-slate-500 uppercase tracking-tighter">TOTAL (VAT Incl.)</span>
-            <span className="text-blue-600">{formatCurrency(totalAmount)}</span>
+          
+          <div className="flex items-center gap-4">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Total (VAT Incl.)</span>
+            <span className="text-xl font-black text-blue-700">
+              {formatCurrency(totalAmount)}
+            </span>
           </div>
         </div>
 
@@ -408,10 +410,10 @@ export default function App() {
             </tbody>
             <tfoot>
               <tr className="bg-slate-50 print:bg-white font-black border-t-2 border-slate-950 print:border-t">
-                <td colSpan={5} className="py-4 px-6 text-right">
+                <td colSpan={5} className="py-2 px-6 text-right">
                   <div className="flex justify-end items-center gap-6">
-                    <span className="text-slate-500 uppercase tracking-widest text-xs">합 계 (SUBTOTAL)</span>
-                    <span className="text-3xl text-blue-700">{formatCurrency(totalAmount)}</span>
+                    <span className="text-slate-500 uppercase tracking-widest text-[10px]">합 계 (SUBTOTAL)</span>
+                    <span className="text-2xl text-blue-700">{formatCurrency(totalAmount)}</span>
                   </div>
                 </td>
                 <td className="no-print"></td>
@@ -422,15 +424,15 @@ export default function App() {
         
         <button
           onClick={handleAddItem}
-          className="mb-4 flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 no-print px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 transition-all active:scale-95"
+          className="mb-2 flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-700 no-print px-3 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 transition-all active:scale-95"
         >
-          <Plus size={18} />
+          <Plus size={14} />
           <span>품목 추가 (Add Line)</span>
         </button>
 
         {/* Payment and Bank Account */}
-        <div className="flex flex-col md:flex-row justify-between gap-4 mb-4 print:mb-0 print:gap-0">
-          <div className="flex-1 flex flex-col gap-2 p-4 print:p-0 bg-slate-50 print:bg-white rounded-2xl border border-slate-200 border-dashed print:border-none relative group">
+        <div className="flex flex-col md:flex-row justify-between gap-2 mb-2 print:mb-0 print:gap-0">
+          <div className="flex-1 flex flex-col gap-1 p-2 print:p-0 bg-slate-50 print:bg-white rounded-xl border border-slate-200 border-dashed print:border-none relative group">
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-2">
                 <CreditCard size={18} className="text-slate-400 no-print" />
@@ -497,24 +499,24 @@ export default function App() {
         </div>
 
         {/* Parts Reference Section (Web only) */}
-        <div className="mt-4 pt-4 border-t-2 border-slate-100 print:hidden">
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-8 bg-slate-900 rounded-full" />
-              <h2 className="text-2xl font-black tracking-tight text-slate-900">
+        <div className="mt-2 pt-2 border-t-2 border-slate-100 print:hidden">
+          <div className="flex justify-between items-center mb-2">
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-5 bg-slate-900 rounded-full" />
+              <h3 className="text-sm font-black tracking-tight text-slate-900">
                 [참고] 실리트 압력밥솥 부품 명칭
-              </h2>
+              </h3>
             </div>
             {!referenceImage && (
-              <label className="cursor-pointer bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl shadow-lg text-sm no-print flex items-center gap-2 transition-all hover:scale-[1.02] active:scale-95">
-                <ImageIcon size={18} />
+              <label className="cursor-pointer bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 rounded-lg text-xs no-print flex items-center gap-1.5 transition-all">
+                <ImageIcon size={14} />
                 <span className="font-bold">이미지 업로드</span>
                 <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
               </label>
             )}
           </div>
           
-          <div className="bg-slate-50 rounded-2xl p-2 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center min-h-[300px] group">
+          <div className="bg-slate-50 rounded-xl p-1 border-2 border-slate-100 border-dashed relative flex flex-col items-center justify-center min-h-[200px] group">
             {referenceImage ? (
               <div className="w-full relative">
                 <motion.img 
@@ -526,24 +528,19 @@ export default function App() {
                 />
                 <button 
                   onClick={handleImageRemove}
-                  className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-rose-600 p-3 rounded-2xl shadow-xl no-print transition-all hover:bg-rose-600 hover:text-white opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100"
+                  className="absolute top-2 right-2 bg-white/90 backdrop-blur-md text-rose-600 p-2 rounded-xl shadow-xl no-print opacity-0 group-hover:opacity-100 transition-all"
                   title="이미지 삭제"
                 >
-                  <X size={20} />
+                  <X size={16} />
                 </button>
               </div>
             ) : (
-               <div className="text-center w-full max-w-md py-16">
-                 <div className="w-20 h-20 bg-slate-200 rounded-3xl flex items-center justify-center mx-auto mb-6 text-slate-400">
-                    <ImageIcon size={40} />
+               <div className="text-center w-full max-w-md py-8">
+                 <div className="w-12 h-12 bg-slate-200 rounded-2xl flex items-center justify-center mx-auto mb-3 text-slate-400">
+                    <ImageIcon size={24} />
                  </div>
-                 <p className="text-slate-600 font-bold mb-2 text-lg">참고 이미지가 없습니다.</p>
-                 <p className="text-slate-400 text-sm leading-relaxed">
-                   우측 상단 '이미지 업로드' 버튼을 통해 <br/>부품 명칭 가이드 이미지를 추가할 수 있습니다.
-                 </p>
-                 <div className="mt-8 bg-blue-50 text-blue-600 px-4 py-3 rounded-2xl text-xs font-bold inline-block border border-blue-100">
-                   Tip: 한 번 업로드하면 브라우저에 영구 저장됩니다.
-                 </div>
+                 <p className="text-slate-600 font-bold mb-1 text-sm">참고 이미지가 없습니다.</p>
+                 <p className="text-slate-400 text-xs">부품 명칭 가이드 이미지를 추가할 수 있습니다.</p>
                </div>
             )}
           </div>
